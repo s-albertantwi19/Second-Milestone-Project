@@ -38,8 +38,13 @@
       <!--Plotly Graph displays -->
       <div id="tester" style="width:100%;max-width:700px"></div>
       <div id="myDiv"></div>
+      <div id="dataset-old"></div>
 
       <script>
+        
+        
+
+
         async function fetchlatestCIDataset() {
           try {
             const response = await fetch('https://api.electricitymap.org/v3/carbon-intensity/latest?zone=GB', {
@@ -92,6 +97,8 @@
             const data = await response.json();
             console.log('Power Breakdown Data:', data);
 
+            //new variable to save
+
             const powerConsumptionBreakdown = data['powerConsumptionBreakdown']
     
             const list = document.getElementById('power-breakdown');
@@ -123,13 +130,58 @@
         }
     
         fetchlatestPBDataset();
+        //history//
+
+        async function fetchOldDatasets(dataPoints, chart) {
+        try {
+          const response = await fetch('https://api.electricitymap.org/v3/carbon-intensity/history?zone=GB', {
+            method: 'GET',
+            headers: {
+              'auth-token': 'HWKZzlqZPsZzwmUcu5mz'
+            }
+          });
+  
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+  
+          const data = await response.json();
+          console.log('Carbon Intensity Historical Data:', data);
+
+          
+  
+          const list = document.getElementById('dataset-old');
+          list.innerHTML = ''; // Clear "Loading..."
+  
+          // Display some key values
+         // const fieldsToShow = ['zone', 'history']; //
+  
+          data['history'].forEach(history => {
+            const li = document.createElement('li');
+            li.textContent = `${history['datetime']}: ${history['carbonIntensity'] !== undefined ? history['carbonIntensity'] : 'N/A'}`;
+            list.appendChild(li);
+            dataPoints.push({
+			x: new Date(history['datetime']),
+			y: history['carbonIntensity']
+		});
+          });
+
+          chart.render();
+  
+        } catch (error) {
+          console.error('Error fetching data:', error);
+          document.getElementById('dataset-old').textContent = 'Failed to load data.';
+        }
+      }
+      
+
 
         //canvas js plot//
         window.onload = function() {
+          var dataPoints = [];
 
-var dataPoints = [];
 
-var chart = new CanvasJS.Chart("chartContainer", {
+          var chart = new CanvasJS.Chart("chartContainer", {
 	animationEnabled: true,
 	theme: "light2",
 	title: {
@@ -147,6 +199,10 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	}]
 });
 
+fetchOldDatasets(dataPoints, chart);
+
+
+//
 function addData(data) {
 	for (var i = 0; i < data.length; i++) {
 		dataPoints.push({
@@ -157,8 +213,8 @@ function addData(data) {
 	chart.render();
 
 }
-
-$.getJSON("https://canvasjs.com/data/gallery/javascript/daily-sales-data.json", addData);
+//
+//$.getJSON("https://canvasjs.com/data/gallery/javascript/daily-sales-data.json", addData);//
 
 }
 
