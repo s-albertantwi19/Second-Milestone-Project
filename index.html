@@ -91,12 +91,24 @@
     
             const data = await response.json();
             console.log('Power Breakdown Data:', data);
+
+            const powerConsumptionBreakdown = data['powerConsumptionBreakdown']
     
             const list = document.getElementById('power-breakdown');
             list.innerHTML = ''; // Clear "Loading..."
     
             // Display some key values
             const fieldsToShow = ['zone', 'powerConsumptionTotal', 'powerProductionTotal', 'datetime', 'updatedAt', 'fossilFreePercentage', 'renewablePercentage', 'powerImportTotal', 'powerExportTotal'];
+
+            //keys within powerconsumptionBreakdown //
+
+            const powerfieldsToShow = ['nuclear', 'geothermal', 'coal']
+
+            powerfieldsToShow.forEach(key => {
+              const li = document.createElement('li');
+              li.textContent = `${key}: ${powerConsumptionBreakdown[key] !== undefined ? powerConsumptionBreakdown[key] : 'N/A'}`;
+              list.appendChild(li);
+            });
     
             fieldsToShow.forEach(key => {
               const li = document.createElement('li');
