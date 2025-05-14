@@ -107,8 +107,67 @@
     
         fetchlatestPBDataset();
 
-        //Historical Carbon intensity//
-        window
+        //canvas js plot//
+        window.onload = function() {
+
+var dataPoints = [];
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2",
+	title: {
+		text: "Daily Sales Data"
+	},
+	axisY: {
+		title: "Units",
+		titleFontSize: 24,
+		includeZero: true
+	},
+	data: [{
+		type: "column",
+		yValueFormatString: "#,### Units",
+		dataPoints: dataPoints
+	}]
+});
+
+function addData(data) {
+	for (var i = 0; i < data.length; i++) {
+		dataPoints.push({
+			x: new Date(data[i].date),
+			y: data[i].units
+		});
+	}
+	chart.render();
+
+}
+
+$.getJSON("https://canvasjs.com/data/gallery/javascript/daily-sales-data.json", addData);
+
+}
+
+
+// Plotly graph template //
+// Plotly graph// 
+const xArray = [55, 49, 44, 24, 15];
+      const yArray = ["Italy","France","Spain","USA","Argentina"];
+      const data = [{
+        x: xArray,
+        y: yArray,
+        type: "bar",
+        orientation: "h",
+        marker: {color:"rgba(255,0,0,0.6)"}}];
+        const layout = {title:"World Wide Wine Production"};
+        Plotly.newPlot("tester", data, layout);
+
+        // Map  template //
+        var data_two = [
+          {type: "densitymap", lon: [10, 20, 30], lat: [15, 25, 35], z: [1, 3, 2],
+          radius: 50, colorbar: {y: 1, yanchor: 'top', len: 0.45}},
+          {type: 'densitymap', lon: [-10, -20, -30], lat: [15, 25, 35],
+          radius: [50, 100, 10],  colorbar: {y: 0, yanchor: 'bottom', len: 0.45}
+        }];
+        var layout_two = {map: {style: 'light', center: {lat: 20}}, width: 600, height: 400};
+        Plotly.newPlot('myDiv', data_two, layout_two);
         
 
 
