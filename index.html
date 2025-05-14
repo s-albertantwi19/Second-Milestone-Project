@@ -88,7 +88,7 @@
             list.innerHTML = ''; // Clear "Loading..."
     
             // Display some key values
-            const fieldsToShow = ['zone', 'powerConsumptionBreakdown', 'datetime', 'updatedAt', 'powerProductionBreakdown'];
+            const fieldsToShow = ['zone', 'powerConsumptionTotal', 'datetime', 'updatedAt', 'fossilFreePercentage', 'renewablePercentage'];
     
             fieldsToShow.forEach(key => {
               const li = document.createElement('li');
@@ -103,6 +103,9 @@
         }
     
         fetchlatestPBDataset();
+
+        //Historical Carbon intensity//
+
 
 
     </script>
