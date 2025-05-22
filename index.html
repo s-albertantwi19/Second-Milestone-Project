@@ -116,6 +116,10 @@
               const li = document.createElement('li');
               li.textContent = `${key}: ${powerConsumptionBreakdown[key] !== undefined ? powerConsumptionBreakdown[key] : 'N/A'}`;
               list.appendChild(li);
+              dataPoints.push({
+              x: new Date('datetime'),
+              y: data['powerConsumptionBreakdown']
+            });
             });
     
             fieldsToShow.forEach(key => {
@@ -189,7 +193,7 @@
             includeZero: true
           },
           data: [{
-            type: "column",
+            type: "line",
             yValueFormatString: "#,### Units",
             dataPoints: dataPoints
           }]
