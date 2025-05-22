@@ -1,25 +1,4 @@
-// === Fetch Carbon Intensity (Latest) ===
-async function fetchlatestCIDataset() {
-  try {
-    const response = await fetch('https://api.electricitymap.org/v3/carbon-intensity/latest?zone=GB', {
-      method: 'GET',
-      headers: {'auth-token': 'HWKZzlqZPsZzwmUcu5mz'}
-    });
-    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-    const data = await response.json();
 
-    const list = document.getElementById('dataset-list');
-    list.innerHTML = '';
-    ['zone', 'carbonIntensity', 'datetime', 'updatedAt'].forEach(key => {
-      const li = document.createElement('li');
-      li.textContent = `${key}: ${data[key] ?? 'N/A'}`;
-      list.appendChild(li);
-    });
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    document.getElementById('dataset-list').textContent = 'Failed to load data.';
-  }
-}
 
 // === Fetch Power Breakdown (Latest) ===
 async function fetchlatestPBDataset() {
@@ -34,7 +13,7 @@ async function fetchlatestPBDataset() {
     list.innerHTML = '';
 
     const breakdown = data['powerConsumptionBreakdown'];
-    ['nuclear', 'geothermal', 'coal'].forEach(key => {
+    ['nuclear', 'geothermal', 'coal',  'biomass', 'battery discharge', 'gas', 'hydro discharge', 'solar', 'wind', 'unknown'].forEach(key => {
       const li = document.createElement('li');
       li.textContent = `${key}: ${breakdown[key] ?? 'N/A'}`;
       list.appendChild(li);
@@ -92,7 +71,6 @@ function initCanvasChart() {
 
 // === Page Load ===
 window.onload = function () {
-  fetchlatestCIDataset();
   fetchlatestPBDataset();
   initCanvasChart();
   plotBarGraph();
