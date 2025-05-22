@@ -83,47 +83,12 @@ function initCanvasChart() {
     theme: "light2",
     title: { text: "Carbon Intensity" },
     axisY: { title: "Units", titleFontSize: 24, includeZero: true },
-    data: [{ type: "column", yValueFormatString: "#,### Units", dataPoints }]
+    data: [{ type: "line", yValueFormatString: "#,### Units", dataPoints }]
   });
   fetchOldDatasets(dataPoints, chart);
 }
 
-// === Plotly: Horizontal Bar Graph ===
-function plotBarGraph() {
-  const xArray = [55, 49, 44, 24, 15];
-  const yArray = ["Italy", "France", "Spain", "USA", "Argentina"];
-  Plotly.newPlot("tester", [{
-    x: xArray,
-    y: yArray,
-    type: "bar",
-    orientation: "h",
-    marker: { color: "rgba(255,0,0,0.6)" }
-  }], { title: "World Wide Wine Production" });
-}
 
-// === Plotly: Density Map of the UK ===
-function plotUKMap() {
-  const data = [{
-    type: "densitymapbox",
-    lon: [-0.1, -2.2, -3.0],
-    lat: [51.5, 53.5, 55.0],
-    z: [1, 3, 2],
-    radius: 20,
-    colorbar: { y: 1, yanchor: 'top', len: 0.45 }
-  }];
-
-  const layout = {
-    mapbox: {
-      style: "carto-positron",
-      center: { lat: 54.0, lon: -2.5 },
-      zoom: 5
-    },
-    width: 700,
-    height: 500
-  };
-
-  Plotly.newPlot('myDiv', data, layout);
-}
 
 // === Page Load ===
 window.onload = function () {
