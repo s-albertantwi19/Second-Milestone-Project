@@ -1,7 +1,7 @@
 
 
 // === Fetch Power Breakdown (Latest) ===
-async function fetchlatestPBDataset(dataPointsTwo, chartTwo) {
+async function fetchlatestPBDataset() {
   try {
     const response = await fetch('https://api.electricitymap.org/v3/power-breakdown/latest?zone=GB', {
       method: 'GET',
@@ -17,17 +17,13 @@ async function fetchlatestPBDataset(dataPointsTwo, chartTwo) {
       const li = document.createElement('li');
       li.textContent = `${key}: ${breakdown[key] ?? 'N/A'}`;
       list.appendChild(li);
-      dataPointsTwo.push({ y: data['powerConsumptionBreakdown']});
     });
-
 
     ['zone', 'powerConsumptionTotal', 'powerProductionTotal', 'datetime', 'updatedAt', 'fossilFreePercentage', 'renewablePercentage', 'powerImportTotal', 'powerExportTotal'].forEach(key => {
       const li = document.createElement('li');
       li.textContent = `${key}: ${data[key] ?? 'N/A'}`;
       list.appendChild(li);
-      dataPointsTwo.push({ x: new Date(['datetime']), y: history['carbonIntensity'] });
     });
-    chart.render();
   } catch (error) {
     console.error('Error fetching power breakdown:', error);
     document.getElementById('power-breakdown').textContent = 'Failed to load data.';
@@ -49,7 +45,7 @@ async function fetchOldDatasets(dataPoints, chart) {
       const li = document.createElement('li');
       li.textContent = `${history['datetime']}: ${history['carbonIntensity'] ?? 'N/A'}`;
       list.appendChild(li);
-      dataPoints.push({ x: new Date(history['datetime']) });
+      dataPoints.push({ x: new Date(history['datetime']), y: history['carbonIntensity'] });
     });
     chart.render();
   } catch (error) {
@@ -70,19 +66,6 @@ function initCanvasChart() {
   });
   fetchOldDatasets(dataPoints, chart);
 }
-
-// === CanvasJS Chart: Power Breakdown ===
-function initCanvasChartTwo() {
-    const dataPointsTwo = [];
-    const chartTwo = new CanvasJS.Chart("chartContainerTwo", {
-      animationEnabled: true,
-      theme: "light2",
-      title: { text: "Latest Breakdown of Power Consumption by Fuel Type" },
-      axisY: { title: "Units", titleFontSize: 24, includeZero: true },
-      data: [{ type: "column", yValueFormatString: "#,### Units", dataPoints }]
-    });
-    fetchlatestPBDatasets(dataPointsTwo, chartTwo);
-  }
 
 
 
