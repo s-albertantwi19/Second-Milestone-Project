@@ -39,18 +39,18 @@ async function fetchOldDatasets(dataPoints, chart) {
     });
     if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
     const data = await response.json();
-    const list = document.getElementById('dataset-old');
-    list.innerHTML = '';
+    //const list = document.getElementById('dataset-old');
+    //list.innerHTML = '';
     data['history'].forEach(history => {
-      const li = document.createElement('li');
-      li.textContent = `${history['datetime']}: ${history['carbonIntensity'] ?? 'N/A'}`;
-      list.appendChild(li);
+      //const li = document.createElement('li');
+      //li.textContent = `${history['datetime']}: ${history['carbonIntensity'] ?? 'N/A'}`;
+      //list.appendChild(li);
       dataPoints.push({ x: new Date(history['datetime']), y: history['carbonIntensity'] });
     });
     chart.render();
   } catch (error) {
     console.error('Error fetching historical data:', error);
-    document.getElementById('dataset-old').textContent = 'Failed to load data.';
+    //document.getElementById('dataset-old').textContent = 'Failed to load data.';
   }
 }
 
@@ -73,6 +73,6 @@ function initCanvasChart() {
 window.onload = function () {
   fetchlatestPBDataset();
   initCanvasChart();
-  plotBarGraph();
-  plotUKMap();
 };
+
+

@@ -10,9 +10,7 @@
     <title> Energy Explorer </title>
     <!-- Bootstrap CSS link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <!-- Plotly CDN link -->
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src='https://cdn.plot.ly/plotly-3.0.1.min.js'></script>
+   
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -24,8 +22,6 @@
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
-              <a class="nav-link" href="#">Global Energy Comparison</a>
-              <a class="nav-link" href="#">Zonal View</a>
             </div>
           </div>
         </div>
@@ -33,16 +29,12 @@
     
       
       <!-- canvas js display -->
-      <div id="chartContainer" style="height: 370px; width: 100%;">
-        <div id="popup">
-          <ul id="power-breakdown">Loading...</ul> 
-        </div>
+      <div id="chartContainer" style="height: 370px; width: 100%;">  
       </div>
-      <div id="chartContainerTwo" style="height: 370px; width: 100%;"></div>
-      <!--Plotly Graph displays -->
-      <div id="tester" style="width:100%;max-width:700px"></div>
-      <div id="myDiv"></div>
-      <div id="dataset-old"></div>
+      <div> Key Insights
+        <ul id="power-breakdown">Loading...</ul> 
+      </div>
+      <!-- <div id="dataset-old"></div> -->
 
     <!--canvas JS links -->
     <script src="assets/js/script.js"></script>
