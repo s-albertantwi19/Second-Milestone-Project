@@ -24,6 +24,25 @@ async function fetchpercentageBreakdown() {
   }
 }
 
+// === attempting fecth of percentage data for display ===
+// === Fetch Carbon Intensity (History) ===
+async function fetchOldDatasets(dataPoints, chart) {
+  try {
+    const response = await fetch('https://api.electricitymap.org/v3/carbon-intensity/history?zone=GB', {
+      method: 'GET',
+      headers: {'auth-token': 'HWKZzlqZPsZzwmUcu5mz'}
+    });
+    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+    const data = await response.json();
+    data['history'].forEach(history => {
+      dataPoints.push({ x: new Date(history['datetime']), y: history['carbonIntensity'] });
+    });
+    chart.render();
+  } catch (error) {
+    console.error('Error fetching historical data:', error);
+  }
+}
+
 
 // === Fetch Power Breakdown (Latest) ===
 async function fetchlatestPBDataset() {
@@ -68,15 +87,12 @@ async function fetchOldDatasets(dataPoints, chart) {
     });
     if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
     const data = await response.json();
-    //const list = document.getElementById('dataset-old');
-    //list.innerHTML = '';
     data['history'].forEach(history => {
       dataPoints.push({ x: new Date(history['datetime']), y: history['carbonIntensity'] });
     });
     chart.render();
   } catch (error) {
     console.error('Error fetching historical data:', error);
-    //document.getElementById('dataset-old').textContent = 'Failed to load data.';
   }
 }
 
@@ -88,7 +104,7 @@ function initCanvasChart() {
     theme: "light2",
     title: { text: "Carbon Intensity" },
     axisY: { title: "gCO2eq/kWh", titleFontSize: 24, includeZero: true },
-    data: [{ type: "line", yValueFormatString: "#,### Units", dataPoints }]
+    data: [{ type: "line", yValueFormatString: "#,### gCO2eq/kWh", dataPoints }]
   });
   fetchOldDatasets(dataPoints, chart);
 }
@@ -110,7 +126,7 @@ async function fetchupdateTime() {
   
       ['updatedAt'].forEach(key => {
           const li = document.createElement('li');
-          li.textContent = `${key}: ${data[key] ?? 'N/A'}`;
+          li.textContent = `${data[key] ?? 'N/A'}`;
           list.appendChild(li);
         });
   
