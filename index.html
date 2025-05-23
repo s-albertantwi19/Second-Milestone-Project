@@ -28,18 +28,22 @@
       </nav>
     
       
-      <!-- canvas js display -->
-      <div> % Breakdown of Power Generation
-        <ul id="renewable-fossil-breakdown">Loading...</ul> 
-      </div>
-      <div id="chartContainer" style="height: 370px; width: 100%;">  
-      </div>
-      <div> GB Power Consumption at Present (in GW)
-        <ul id="power-breakdown">Loading...</ul> 
+      
+      <div class="container-fluid">
+        <div class ="row">
+          <div class="col-sm-2" id="breakdownpercentage"> % Breakdown of Latest Power Generation
+            <ul id="renewable-fossil-breakdown">Loading...</ul> 
+          </div>
+          <!-- canvas js display -->
+          <div class="col-sm-8" id="chartContainer"></div>
+          <div class="col-sm-2" id="breakdownPower"> GB Power Consumption at Present (in GW)
+            <ul id="power-breakdown">Loading...</ul> 
+          </div>
+        </div>
       </div>
 
-      <footer>
-        <p id="footer">Time of last data update</p>
+      <footer class="fixed-bottom">
+        <p id="footer">Time of last data update:</p>
         <ul id="last-update-time">Loading...</ul> 
       </footer> 
       
