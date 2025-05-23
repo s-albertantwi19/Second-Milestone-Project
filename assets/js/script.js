@@ -12,14 +12,17 @@ async function fetchlatestPBDataset() {
     const list = document.getElementById('power-breakdown');
     list.innerHTML = '';
 
+    //list for renewable percentage //
+    // list for update time to be in page footer//
+
     const breakdown = data['powerConsumptionBreakdown'];
-    ['nuclear', 'geothermal', 'coal',  'biomass', 'battery discharge', 'gas', 'hydro discharge', 'solar', 'wind', 'unknown'].forEach(key => {
+    ['nuclear', 'geothermal', 'coal',  'biomass', 'battery discharge', 'gas', 'hydro discharge', 'solar', 'wind', 'unknown', 'powerConsumptionTotal'].forEach(key => {
       const li = document.createElement('li');
       li.textContent = `${key}: ${breakdown[key] ?? 'N/A'}`;
       list.appendChild(li);
     });
 
-    ['zone', 'powerConsumptionTotal', 'powerProductionTotal', 'datetime', 'updatedAt', 'fossilFreePercentage', 'renewablePercentage', 'powerImportTotal', 'powerExportTotal'].forEach(key => {
+    [ 'updatedAt'].forEach(key => {
       const li = document.createElement('li');
       li.textContent = `${key}: ${data[key] ?? 'N/A'}`;
       list.appendChild(li);
@@ -61,7 +64,7 @@ function initCanvasChart() {
     animationEnabled: true,
     theme: "light2",
     title: { text: "Carbon Intensity" },
-    axisY: { title: "Units", titleFontSize: 24, includeZero: true },
+    axisY: { title: "gCO2eq/kWh", titleFontSize: 24, includeZero: true },
     data: [{ type: "line", yValueFormatString: "#,### Units", dataPoints }]
   });
   fetchOldDatasets(dataPoints, chart);
