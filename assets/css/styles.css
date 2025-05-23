@@ -1,2 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Baumans');
+@import url('https://fonts.googleapis.com/css?family=Revalia');
 
+.navbar {
+    font-family: 'Revalia';
+    text-align: center;
+    color:blue;
+    background-color: #41052c;
+}
