@@ -4,8 +4,8 @@
 .navbar {
     font-family: 'Revalia';
     text-align: center;
-    color:blue;
-    background-color: #e6b1d4;
+    color:rgb(0, 0, 2);
+    background-color: #025127;
 }
 
 #chartContainer {
@@ -38,12 +38,13 @@ ul
 }
 
 footer {
-    
     padding-top: 0;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #025127;
+    font-family: 'Revalia';
 
 }
 
@@ -51,5 +52,4 @@ footer ul {
     list-style: none;
     text-align: center;
     padding-top: 0;
-
 }
