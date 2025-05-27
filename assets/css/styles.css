@@ -5,7 +5,19 @@
     font-family: 'Revalia';
     text-align: center;
     color:blue;
-    background-color: #41052c;
+    background-color: #e6b1d4;
+}
+
+#chartContainer {
+    margin-top:0;
+    width:100%;
+    margin-bottom:0;
+}
+
+.key-stats{
+    padding-top: 400px;
+    padding-bottom: 150px;
+   
 }
 
 #breakdownpercentage {
@@ -13,9 +25,31 @@
 
 }
 
+#breakdownPower {
+    font-family: 'Revalia';
+}
+
+
 ul
 {
   text-align: left;
   list-style:circle;
+  text-transform: capitalize;
 }
 
+footer {
+    
+    padding-top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+
+}
+
+footer ul {
+    list-style: none;
+    text-align: center;
+    padding-top: 0;
+
+}
