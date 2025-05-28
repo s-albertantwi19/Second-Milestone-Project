@@ -15,35 +15,34 @@
 <body>
     <nav class="navbar">
         <div class="container-fluid">
-          <a class="navbar-brand" href="./index.html">Energy Explorer</a> 
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          </div>
+          <a class="navbar-brand" href="./index.html"><h3>Energy Explorer</h3></a> 
+          <a class="navbar-brand"  href=""><h3>Methodology</h3></a>
         </div>
       </nav>
     
       <!-- canvas js display outside of container div-->
-      <div id="chartContainer"></div>
-      <div id="midsection-banner"> Key Stats </div>
+      <div id="chartContainer" alt="graphical dispaly of carbon intensity for the GB zone for the past 23 hours"></div>
       <!-- display of key stats-->
       <div class="container-fluid key-stats text-center">
         <div class="row content">
-          <div class="col-sm-6 col-lg-6" id="breakdownPower"> GB Power Consumption at Present (in GW)
+          <div class="col-sm-6 col-lg-6" id="breakdownPower" alt="A list detailing the breakdown of power consumption in the GB zone by fuel type"><h4>GB Power Consumption at Present (in MW)</h4> 
             <ul id="power-breakdown">Loading...</ul> 
           </div>
-          <div class="col-sm-6 col-lg-6" id="breakdownpercentage"> % Breakdown of Latest Power Generation
+          <div class="col-sm-6 col-lg-6" id="breakdownpercentage" alt="A list detailing the percentage breakdown of the latest power eneration in the GB zone. This list details the percentage of power being consumed coming from fossil free sources and the percentage being consumed that is renewable"><h4>% Breakdown of Latest Power Generation</h4>
             <ul id="renewable-fossil-breakdown">Loading...</ul> 
           </div>
         </div>
       </div>
 
       <footer class="text-center">
-        <p id="footer">Time of last data update:</p>
+        <p id="footer" alt="The footer details the time of the most recent data update for the API call">Time of last data update:</p>
         <ul id="last-update-time">Loading...</ul> 
       </footer> 
       
 
-    <!--canvas JS links -->
+    
     <script src="assets/js/script.js"></script>
+    <!--canvas JS links -->
     <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
     <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
 
