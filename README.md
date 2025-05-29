@@ -135,6 +135,7 @@ Throughout the development of the website I used the following references:
 - [web.dev](https://web.dev/) for optimisation and insights into understanding jQuery
 - [ElectricityMaps](https://portal.electricitymaps.com/dashboard) for understanding how to utilise the API call and the methodology of measuring data
 - [CanvasJS](canvasjs.com) for understanding how to use JSON in data visualisation
+- [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/) for responsive grid design and navbar design
 
 
 # Author
