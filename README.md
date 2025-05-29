@@ -8,7 +8,7 @@ This project was designed to verify my capabilities of the fetch API call in Jav
 
 ### About 
 
-Energy Explorer is a graphical dashboard, detailing the historical carbon intensity for the GB zone up to T-1 hours (data availability for the past 23 hours up to the last hour), the current fuel mix of the GB zone, and the percentage breakdown of how green the fuel mix is at present. 
+Energy Explorer is a graphical dashboard, detailing the historical carbon intensity for the GB zone up to T-1 hours (data availability for the past 23 hours up to the last hour), the current fuel mix of the GB zone, and the percentage breakdown of how green the fuel mix is at present. The source for the API is (https://portal.electricitymaps.com/dashboard)
 
 ## Table of Contents
 1. [UX](/#user)
@@ -55,8 +55,6 @@ The website is now successfully deployed on GitHub Pages once you revert to your
 
 ![image info](./assets/images/deployment-settings.png)
 ![image info](./assets/images/deployment-pages.png)
-![image info](./assets/images/deployment-main.png)
-![image info](./assets/images/deployment-queued.png)
 
 
 # Features
@@ -107,10 +105,15 @@ In order to test, I used different web browsers using [Browser Stack](https://ww
 
 ### Lighthouse Testing Mobile vs Web
 
-
-![image info](./assets/images/lighthousemobile%20(1).png)
-
+#### Desktop/Web
 ![image info](./assets/images/lighthouseweb.png)
+
+#### Mobile 
+![image info](./assets/images/lighthouse-mobile.png)
+
+The performance of the app on a mobile device is slower than desktop version. Below I have attached an image to show my investigation into the performance. To increase the perfomance from a score of 86 to 89, I preconnected the Google fonts link for optimized loading.
+
+![image info](./assets/images/lighthouse-mobile-performance-investigation.png)
 
 # Technologies Used
 
@@ -129,7 +132,9 @@ Throughout the development of the website I used the following references:
 - Code Institute example code from JavaScript Essentials.
 - [GeeksForGeeks](https://www.geeksforgeeks.org/)
 - [W3Schools](W3Schools.com)
-- [How to make a responsive site for all devices](https://www.youtube.com/watch?v=ZYV6dYtz4HA) for responsive design on all devices
+- [web.dev](https://web.dev/) for optimisation and insights into understanding jQuery
+- [ElectricityMaps](https://portal.electricitymaps.com/dashboard) for understanding how to utilise the API call and the methodology of measuring data
+- [CanvasJS](canvasjs.com) for understanding how to use JSON in data visualisation
 
 
 # Author
