@@ -101,6 +101,10 @@ In order to test, I used different web browsers using [Browser Stack](https://ww
 
 ![image info](./assets/images/htmlvalidation.png)
 
+### JSHint Testing
+
+![image info](./assets/images/JSHintTesting.png)
+
 ### Lighthouse Testing Mobile vs Web
 
 
