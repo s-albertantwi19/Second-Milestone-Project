@@ -1,14 +1,14 @@
 # Energy Explorer - A dive into 
 
-[Project 1](https://s-albertantwi19.github.io/First-Milestone-Project/) - Samuel Albert-Antwi 
+[Project 2](https://s-albertantwi19.github.io/Second-Milestone-Project/) - Samuel Albert-Antwi 
 
-## Energy Explorer - A dive into
+## Energy Explorer - A dive into the GB energy landscape
 
-This project was designed to ...
+This project was designed to verify my capabilities of the fetch API call in JavaScript whilst focusing on the energy as this is a sector of interest to me and where my skillset in data visualisations was birthed.
 
 ### About 
 
-...
+Energy Explorer is a graphical dashboard, detailing the historical carbon intensity for the GB zone up to T-1 hours (data availability for the past 23 hours up to the last hour), the current fuel mix of the GB zone, and the percentage breakdown of how green the fuel mix is at present. 
 
 ## Table of Contents
 1. [UX](/#user)
@@ -22,29 +22,25 @@ This project was designed to ...
 # User Experience UX
 ## User Stories
 
-The aim of the was to...
-
-The primary focus of the site is to...
+The aim of the design was to reflect a simple user experience - clear and concise features such as a graphical display of historial carbon intensity data and lists further detailing fuel mix.
 
 # Design
 
-The website has been created across 1 page...
+The website has been created across 1 page as a dashboard for simpicity 
 
-The chosen colour scheme has been selected to reflect ...
+The chosen colour scheme has been selected to reflect the theme of 'green' energy as the UK works towards Net Zero 2050. The aim for the nation is cleaner electricity generation - this web app serves to track this.
 
-![image info](./assets/images/pallete.png)
+![image info](./assets/images/green-pallette.png)
 
 # Deployment
 
-To deploy the project I have utilised Github Desktop and Github
+To deploy the project I have utilised Github.
 
 ## My Repository
 
-...
+I created a new Github repository and cloned the repository in Visual Studio Code to develop locally. 
 
-I created a new Github repository and cloned the repository using Github Desktop to develop locally in Visual Studio Code.
-
-Whilst coding in Visual Studio Code, I ensured to save my development at each interval and regularly commit to the respository with commit messages on Github Desktop - this was the preferred method of developing as my Github account had failures when linking to Visual Studio Code. Had this not been an issue, I would have utilised the terminal to make my git commit statements and git push commands.
+Whilst coding in Visual Studio Code, I ensured to save my development at each interval and regularly commit to the respository with commit messages through Visual Studio Code's source control panel. To verify my ability to use the terminal, I have also used git push/pull commands to commit to main.
 
 ## Hosting
 
@@ -69,7 +65,7 @@ The feautures for the webpage were chosen for easy accessibility and a simple us
 
 ## Navigation
 
-For the webiste I opted for a sidebar navigation menu, which remains across each page. In order to do so, the main page has a margin to allow space for this navbar. For smaller screens, the navbar goes to the top of the page
+For the web app I opted for a navigation menu, at the top of the page. The 'Energy Explorer'. In order to do so, the main page has a margin to allow space for this navbar. For smaller screens, the navbar goes to the top of the page
 
 ## Full Screen (Desktop) View
 
@@ -77,16 +73,18 @@ For the webiste I opted for a sidebar navigation menu, which remains across each
 
 ## Smaller Screen View
 
-![image info](./assets/images/responsive-smaller-screen.png)
+![image info](./assets/images/responsive-smaller-screen-Nest.png)
+![image info](./assets/images/responsive-smaller-screen-Nest-bottom.png)
 
 ## IPhone SE View
 
-![image info](./assets/images/iphoneSE-responsive.png)
+![image info](./assets/images/responsive-iphone-se.png)
+
 
 ## IPhone 12 Pro View
 
-![image info](./assets/images/iphone12pro-responsive.png)
-![image info](./assets/images/iphone12pro-responsive%20form.png)
+![image info](./assets/images/responsive-iphone12pro.png)
+![image info](./assets/images/responsive-iphone12pro-bottomhalf.png)
 
 # Testing
 
@@ -108,23 +106,23 @@ In order to test, I used different web browsers using [Browser Stack](https://ww
 
 ![image info](./assets/images/lighthousemobile%20(1).png)
 
-![image info](./assets/images/lighthouseweb.png
+![image info](./assets/images/lighthouseweb.png)
 
 # Technologies Used
 
 ## Languages
 
-HTML and CSS have been used in the development of the website
+HTML, CSS and JavaScript have been used in the development of the website. 
 
 ## Technology
 
-Github and Github Desktop have been used to deploy and commit changes respectively
+Github has been used to deploy and commit changes. 
 
 # Credits and References
 
 Throughout the development of the website I used the following references:
 
-- Code Institute example code from HTML and CSS Essentials
+- Code Institute example code from JavaScript Essentials.
 - [GeeksForGeeks](https://www.geeksforgeeks.org/)
 - [W3Schools](W3Schools.com)
 - [How to make a responsive site for all devices](https://www.youtube.com/watch?v=ZYV6dYtz4HA) for responsive design on all devices
