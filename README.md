@@ -1,4 +1,4 @@
-# Energy Explorer - A dive into 
+# Energy Explorer 
 
 [Project 2](https://s-albertantwi19.github.io/Second-Milestone-Project/) - Samuel Albert-Antwi 
 
