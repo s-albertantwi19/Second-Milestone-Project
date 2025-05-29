@@ -92,7 +92,7 @@ In order to test, I used different web browsers using [Browser Stack](https://ww
 
 ### Broswer Stack Testing
 
-![image info](./assets/images/broswerstack-performance.png)
+![image info](./assets/images/browser-stack-testing.png)
 
 ### CSS Validation
 
