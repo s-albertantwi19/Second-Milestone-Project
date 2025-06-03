@@ -104,7 +104,7 @@ function initCanvasChart() {
     theme: "light2",
     title: { text: "Carbon Intensity" },
     axisY: { title: "gCO2eq/kWh", titleFontSize: 24, includeZero: true },
-    data: [{ type: "line", yValueFormatString: "#,### gCO2eq/kWh", dataPoints }]
+    data: [{ type: "line", yValueFormatString: "#,### gCO2eq/kWh", dataPoints}]
   });
   fetchOldDatasets(dataPoints, chart);
 }
@@ -136,8 +136,32 @@ async function fetchupdateTime() {
     }
   }
 
+// === flashcard game === 
 
+const flashcards = [
+  {question: "largest energy site?...", answer: "here there"}
 
+]
+
+const container = document.getElementById("explanation-game");
+
+flashcards.forEach((card, index) => {
+  const cardDiv = document.createElement("div");
+  cardDiv.classList.add("card");
+
+  cardDiv.innerHTML = `
+    <div class="card-inner">
+      <div class="card-front">${card.question}</div>
+      <div class="card-back">${card.answer}</div>
+    </div>
+  `;
+
+  cardDiv.addEventListener("click", () => {
+    cardDiv.classList.toggle("flipped");
+  });
+
+  container.appendChild(cardDiv);
+});
 
 
 // === Page Load ===
