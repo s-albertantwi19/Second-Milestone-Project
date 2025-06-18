@@ -24,26 +24,6 @@ async function fetchpercentageBreakdown() {
   }
 }
 
-// === attempting fecth of percentage data for display ===
-// === Fetch Carbon Intensity (History) ===
-async function fetchOldDatasets(dataPoints, chart) {
-  try {
-    const response = await fetch('https://api.electricitymap.org/v3/carbon-intensity/history?zone=GB', {
-      method: 'GET',
-      headers: {'auth-token': 'HWKZzlqZPsZzwmUcu5mz'}
-    });
-    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-    const data = await response.json();
-    data['history'].forEach(history => {
-      dataPoints.push({ x: new Date(history['datetime']), y: history['carbonIntensity'] });
-    });
-    chart.render();
-  } catch (error) {
-    console.error('Error fetching historical data:', error);
-  }
-}
-
-
 // === Fetch Power Breakdown (Latest) ===
 async function fetchlatestPBDataset() {
   try {
@@ -97,6 +77,9 @@ async function fetchOldDatasets(dataPoints, chart) {
 }
 
 // === CanvasJS Chart: Carbon Intensity ===
+/**
+ * This function .... explain here
+ */
 function initCanvasChart() {
   const dataPoints = [];
   const chart = new CanvasJS.Chart("chartContainer", {
@@ -104,13 +87,23 @@ function initCanvasChart() {
     theme: "light2",
     title: { text: "Carbon Intensity" },
     axisY: { title: "gCO2eq/kWh", titleFontSize: 24, includeZero: true },
-    data: [{ type: "line", yValueFormatString: "#,### gCO2eq/kWh", dataPoints}]
+    axisX: {
+        valueFormatString: "DD MMM YYYY HH:mm",
+        labelAngle: -45
+    },
+    data: [{ 
+        type: "line",
+        xValueFormatString: "DD MMM YYYY HH:mm",
+        yValueFormatString: "#,### gCO2eq/kWh",
+        toolTipContent: "{x} <br><strong>{y}</strong>",
+        dataPoints }]
   });
   fetchOldDatasets(dataPoints, chart);
 }
 
-// === fetch for update time in footer ===
-
+/**
+ * This function fetches for update time in footer
+ */
 async function fetchupdateTime() {
     try {
       const response = await fetch('https://api.electricitymap.org/v3/power-breakdown/latest?zone=GB', {
@@ -136,33 +129,39 @@ async function fetchupdateTime() {
     }
   }
 
-// === flashcard game === 
-
-const flashcards = [
-  {question: "largest energy site?...", answer: "here there"}
-
-]
-
-const container = document.getElementById("explanation-game");
-
-flashcards.forEach((card, index) => {
-  const cardDiv = document.createElement("div");
-  cardDiv.classList.add("card");
-
-  cardDiv.innerHTML = `
-    <div class="card-inner">
-      <div class="card-front">${card.question}</div>
-      <div class="card-back">${card.answer}</div>
-    </div>
-  `;
-
-  cardDiv.addEventListener("click", () => {
-    cardDiv.classList.toggle("flipped");
+  const flashcards = [
+    { question: "What is Carbon Intensity?", answer: "HyperText Markup Language" },
+    { question: "What is Net Zero 2050?", answer: "To style HTML content" },
+    { question: "Job Creation", answer: "1 in 25 jobs supported across the UK (1.48m)" },
+    { question: "Reduced Emissions?", answer: "82% reduction in carbon emissions from the power sector since 1990" },
+    { question: "Longevity", answer: "£100bn has been planned for investment in new energy sources over the next decade" },
+    { question: "The UK are leaders", answer: "" },
+    { question: "What does API stand for?", answer: "Application Programming Interface" },
+    { question: "What is a boolean?", answer: "True or false value" },
+    { question: "What is NaN?", answer: "'Not-a-Number'" },
+    { question: "What is 'null'?", answer: "An intentional absence of any value" },
+  ];
+  
+  const container = document.getElementById("flashcard-container");
+  
+  flashcards.forEach((cardData) => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+  
+    card.innerHTML = `
+      <div class="card-inner">
+        <div class="card-front">${cardData.question}</div>
+        <div class="card-back">${cardData.answer}</div>
+      </div>
+    `;
+  
+    card.addEventListener("click", () => {
+      card.classList.toggle("flipped");
+    });
+  
+    container.appendChild(card);
   });
-
-  container.appendChild(cardDiv);
-});
-
+  
 
 // === Page Load ===
 window.onload = function () {
@@ -171,5 +170,4 @@ window.onload = function () {
   fetchpercentageBreakdown();
   fetchupdateTime();
 };
-
 
